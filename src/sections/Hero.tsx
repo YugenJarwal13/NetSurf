@@ -3,8 +3,13 @@ import { Download, Play, Mic } from 'lucide-react';
 import NeuralShader from '../components/NeuralShader';
 
 const demoUrl = 'https://youtu.be/BRdd47T5l-8?si=MKA716o5QKvkGhBZ';
+const downloadUrl = 'https://bit.ly/NetsurfSetup';
 
 export default function Hero() {
+  const handleDownload = () => {
+    window.location.href = downloadUrl;
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       <NeuralShader />
@@ -120,13 +125,14 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.3, ease: 'easeOut' }}
       >
-        <a
-          href="#download"
+        <button
+          type="button"
+          onClick={handleDownload}
           className="btn-primary flex items-center gap-2"
         >
           <Download className="w-4 h-4" />
           Download Now
-        </a>
+        </button>
 
         <a
           href={demoUrl}

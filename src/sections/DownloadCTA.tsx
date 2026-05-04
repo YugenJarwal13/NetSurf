@@ -2,9 +2,14 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Download } from 'lucide-react';
 
+const downloadUrl = 'https://bit.ly/NetsurfSetup';
+
 export default function DownloadCTA() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, margin: '-100px' });
+  const handleDownload = () => {
+    window.location.href = downloadUrl;
+  };
 
   return (
     <section id="download" ref={sectionRef} className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
@@ -48,7 +53,9 @@ export default function DownloadCTA() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
         >
           <button
+            type="button"
             className="btn-primary animate-neon-pulse text-base px-12 py-4 inline-flex items-center gap-3"
+            onClick={handleDownload}
           >
             <Download className="w-5 h-5" />
             Download NetSurf

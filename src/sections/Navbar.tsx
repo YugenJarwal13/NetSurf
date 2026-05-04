@@ -9,6 +9,8 @@ const navLinks = [
   { label: 'Pricing', href: '#pricing' },
 ];
 
+const downloadUrl = 'https://bit.ly/NetsurfSetup';
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -25,6 +27,11 @@ export default function Navbar() {
     setMobileOpen(false);
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleDownload = () => {
+    setMobileOpen(false);
+    window.location.href = downloadUrl;
   };
 
   return (
@@ -72,7 +79,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:block">
             <button
-              onClick={() => scrollTo('#download')}
+              onClick={handleDownload}
               className="rounded-full px-6 py-2.5 text-sm font-semibold text-white gradient-cta flex items-center gap-2"
               style={{ boxShadow: '0 4px 20px rgba(110,90,254,0.4)' }}
             >
@@ -115,7 +122,7 @@ export default function Navbar() {
                 </motion.button>
               ))}
               <motion.button
-                onClick={() => scrollTo('#download')}
+                onClick={handleDownload}
                 className="btn-primary mt-4 flex items-center gap-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

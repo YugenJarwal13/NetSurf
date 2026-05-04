@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Check } from 'lucide-react';
 
+const downloadUrl = 'https://bit.ly/NetsurfSetup';
+
 const plans = [
   {
     name: 'Free',
@@ -38,6 +40,9 @@ const plans = [
 export default function Pricing() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, margin: '-100px' });
+  const handleDownload = () => {
+    window.location.href = downloadUrl;
+  };
 
   return (
     <section id="pricing" ref={sectionRef} className="relative min-h-[80vh] flex items-center justify-center py-20">
@@ -123,11 +128,15 @@ export default function Pricing() {
                 <button
                   className="w-full py-3 rounded-full font-semibold text-white text-sm gradient-magenta-violet"
                   style={{ boxShadow: '0 4px 20px rgba(110,90,254,0.4)' }}
+                  onClick={plan.cta === 'Download' ? handleDownload : undefined}
                 >
                   {plan.cta}
                 </button>
               ) : (
-                <button className="w-full py-3 rounded-full font-semibold text-white text-sm border border-white/20 hover:bg-white/[0.08] transition-colors duration-300">
+                <button
+                  className="w-full py-3 rounded-full font-semibold text-white text-sm border border-white/20 hover:bg-white/[0.08] transition-colors duration-300"
+                  onClick={plan.cta === 'Download' ? handleDownload : undefined}
+                >
                   {plan.cta}
                 </button>
               )}
