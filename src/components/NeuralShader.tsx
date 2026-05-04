@@ -67,21 +67,16 @@ void main() {
   float mouseDist = distance(uv * aspect, mouseUV * aspect);
   float mouseGlow = exp(-mouseDist * 8.0) * 0.4;
   
-  vec3 violet = vec3(0.431, 0.353, 0.996);
-  vec3 cyan = vec3(0.0, 0.784, 0.784);
-  vec3 magenta = vec3(0.784, 0.106, 0.553);
-  
-  float colorMix = n1 * 0.5 + 0.5;
-  vec3 baseColor = mix(violet, cyan, colorMix);
-  baseColor = mix(baseColor, magenta, n3 * 0.3);
+  vec3 white = vec3(1.0);
+  vec3 baseColor = white;
   
   float intensity = nodePattern * 0.6 + lines + mouseGlow;
   
   float vignette = 1.0 - smoothstep(0.3, 1.0, length(uv - 0.5) * 1.5);
   
   vec3 color = baseColor * intensity * vignette;
-  
-  color += violet * 0.03 * vignette;
+
+  color += white * 0.03 * vignette;
   
   float alpha = min(intensity * vignette * 2.0, 0.9);
   gl_FragColor = vec4(color, alpha);

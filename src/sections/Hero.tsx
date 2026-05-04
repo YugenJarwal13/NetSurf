@@ -9,6 +9,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       <NeuralShader />
 
+      {/* Background fade */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -17,9 +18,10 @@ export default function Hero() {
         }}
       />
 
+      {/* HERO TEXT */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 pt-12 md:pt-16 max-w-[900px] mx-auto">
         <motion.h1
-          className="font-black italic tracking-tighter leading-[0.95] gradient-text neon-glow"
+          className="font-black italic tracking-tighter leading-[0.95] hero-white-text"
           style={{ fontSize: 'clamp(48px, 7vw, 108px)' }}
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -41,6 +43,7 @@ export default function Hero() {
         </motion.p>
       </div>
 
+      {/* MOCKUP */}
       <motion.div
         className="relative z-10 mt-12 w-full max-w-[900px] px-6"
         initial={{ opacity: 0, y: 60 }}
@@ -48,38 +51,44 @@ export default function Hero() {
         transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
       >
         <div
-          className="relative rounded-[20px] border border-neon-violet/30 overflow-hidden"
+          className="relative rounded-[20px] border border-white/10 overflow-hidden"
           style={{
-            background: 'rgba(17, 17, 24, 0.8)',
-            backdropFilter: 'blur(12px)',
-            boxShadow: '0 30px 100px rgba(0,0,0,0.6), 0 0 60px rgba(110,90,254,0.2)',
+            background: 'rgba(15, 15, 20, 0.75)',
+            backdropFilter: 'blur(14px)',
+            boxShadow:
+              '0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(99,102,241,0.15)',
           }}
         >
+          {/* Top bar */}
           <div className="flex items-center gap-2 px-5 py-4 border-b border-white/[0.06]">
             <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
             <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
             <div className="w-3 h-3 rounded-full bg-[#28CA42]" />
+
             <div className="flex-1 mx-4">
-              <div className="bg-panel/80 rounded-lg px-4 py-1.5 text-xs text-text-muted text-center max-w-[280px] mx-auto">
+              <div className="bg-white/5 rounded-lg px-4 py-1.5 text-xs text-text-muted text-center max-w-[280px] mx-auto">
                 netsurf.ai
               </div>
             </div>
           </div>
 
+          {/* Input */}
           <div className="p-6 md:p-8 min-h-[200px] flex flex-col items-center justify-center">
-            <div className="w-full max-w-[600px] glass-card rounded-xl px-5 py-4 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-neon-violet/20 flex items-center justify-center flex-shrink-0">
-                <span className="text-neon-violet text-xs font-bold">AI</span>
+            <div className="w-full max-w-[600px] rounded-xl px-5 py-4 flex items-center gap-3 border border-white/10 bg-white/[0.03]">
+              <div className="w-8 h-8 rounded-full bg-indigo-500/15 flex items-center justify-center flex-shrink-0">
+                <span className="text-indigo-400 text-xs font-bold">AI</span>
               </div>
+
               <div className="flex-1 text-left">
-                <span className="text-text-primary text-sm typing-command inline-block whitespace-nowrap overflow-hidden">
+                <span className="text-text-primary text-sm whitespace-nowrap overflow-hidden">
                   Find cheapest flight to Goa
                 </span>
               </div>
+
               <div className="flex items-center gap-2">
                 <Mic className="w-4 h-4 text-text-muted" />
-                <div className="w-6 h-6 rounded-full bg-neon-emerald/20 flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-neon-emerald animate-status-pulse" />
+                <div className="w-6 h-6 rounded-full bg-emerald-500/15 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 </div>
               </div>
             </div>
@@ -90,28 +99,35 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Floating animation */}
         <style>{`
           @keyframes floatMockup {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
           }
         `}</style>
+
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ animation: 'floatMockup 6s ease-in-out infinite' }}
         />
       </motion.div>
 
+      {/* CTA */}
       <motion.div
         className="relative z-10 flex items-center gap-4 mt-10 pb-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.3, ease: 'easeOut' }}
       >
-        <a href="#download" className="btn-primary animate-neon-pulse flex items-center gap-2">
+        <a
+          href="#download"
+          className="btn-primary flex items-center gap-2"
+        >
           <Download className="w-4 h-4" />
           Download Now
         </a>
+
         <a
           href={demoUrl}
           target="_blank"
@@ -122,6 +138,18 @@ export default function Hero() {
           Watch Demo
         </a>
       </motion.div>
+
+      {/* WHITE TEXT STYLE */}
+      <style>{`
+        .hero-white-text {
+          color: #ffffff;
+
+          /* subtle depth (NOT neon) */
+          text-shadow:
+            0 2px 20px rgba(255, 255, 255, 0.08),
+            0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+      `}</style>
     </section>
   );
 }

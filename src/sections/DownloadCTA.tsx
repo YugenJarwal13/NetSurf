@@ -31,7 +31,7 @@ export default function DownloadCTA() {
         transition={{ duration: 0.4, ease: 'easeOut' }}
       >
         <h2
-          className="font-black italic gradient-text mb-8"
+          className="font-black italic text-white mb-8"
           style={{
             fontSize: 'clamp(40px, 6vw, 80px)',
             lineHeight: 0.95,
